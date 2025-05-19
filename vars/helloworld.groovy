@@ -1,8 +1,9 @@
 def call() {
     stage('Hello World') {
         script {
-            echo "Hello World from Shared Library!"
+            echo "Before error..."
             error("Intentional failure for testing")
+            currentBuild.result = 'FAILURE'  // Explicitly mark pipeline as failed
         }
     }
 }
