@@ -1,3 +1,8 @@
 def call() {
-    echo "Hello World from Shared Library!"
+    stage('Hello World') {
+        script {
+            echo "Hello World from Shared Library!"
+            error("Intentional failure for testing")
+        }
+    }
 }
