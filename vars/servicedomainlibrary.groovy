@@ -1,26 +1,24 @@
 def call(String stageToRun) {
     node {
         try {
+            echo "Starting ${stageToRun} stage..."
+            
             if (stageToRun == 'HelloWorld' || stageToRun == 'None') {
-                stage('Hello World') {
-                    script {
-                        echo "Hello World from Shared Library!"
-                    }
-                }
+                helloworld() // Call the HelloWorld library function
             }
 
             if (stageToRun == 'HiWorld' || stageToRun == 'None') {
-                stage('Hi World') {
-                    script {
-                        echo "Hi World from Shared Library!"
-                    }
-                }
+                hiworld() // Call the HiWorld library function
             }
+
+            echo "Completed ${stageToRun} stage."
         } catch (Exception e) {
             echo "Stage ${stageToRun} failed: ${e.getMessage()}"
             env.FAILED_STAGE = stageToRun
 
-            // Prompt user for retry or cancel
+            // Confirm failure handling block is reached
+            echo "Entering failure handling logic for ${env.FAILED_STAGE}..."
+
             def userDecision = input(
                 message: "Stage ${env.FAILED_STAGE} failed. Do you want to retry or cancel?",
                 parameters: [
