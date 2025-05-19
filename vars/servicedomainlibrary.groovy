@@ -7,7 +7,7 @@ def call(String stageToRun) {
                 script {
                     try {
                         echo "Executing Hello World..."
-                        helloWorld() // Call the shared library function
+                        helloworld() // Call the shared library function
                         echo "Hello World completed successfully."
                     } catch (Exception e) {
                         echo "Hello World stage failed: ${e.getMessage()}"
@@ -37,7 +37,7 @@ def call(String stageToRun) {
                 script {
                     try {
                         echo "Executing Hi World..."
-                        hiWorld() // Call the shared library function
+                        hiworld() // Call the shared library function
                         echo "Hi World completed successfully."
                     } catch (Exception e) {
                         echo "Hi World stage failed: ${e.getMessage()}"
