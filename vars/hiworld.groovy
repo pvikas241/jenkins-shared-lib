@@ -5,4 +5,3 @@ def call() {
             currentBuild.result = 'FAILURE'  // Explicitly mark pipeline as failed
         }
     }
-}
