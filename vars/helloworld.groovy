@@ -5,9 +5,11 @@ def call() {
         try {
             echo '[helloWorld] Running Hello World step...'
 
-            // Simulate a command that might fail
-            // Replace this with real logic in your case
-            sh 'exit 1'  // simulate failure for testing
+            if (isUnix()) {
+                sh 'exit 1' // Unix-style command
+            } else {
+                bat 'exit /b 1' // Windows-style command
+            }
 
             echo '[helloWorld] Step completed successfully.'
             keepGoing = false
